@@ -80,9 +80,9 @@ initMap = () => {
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
     mapboxToken: 'pk.eyJ1IjoiYW5lazEzIiwiYSI6ImNqbmJ6azA3dTF0eW0zcXJmcmRtZWwzYmkifQ.d6R9tHiHEnlzb8CZUVHZxw',
     maxZoom: 18,
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-      '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    attribution: 'Map data &copy; <a tabindex="-1" href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+      '<a tabindex="-1" href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+      'Imagery © <a tabindex="-1" href="https://www.mapbox.com/">Mapbox</a>',
     id: 'mapbox.streets'
   }).addTo(newMap);
 
@@ -176,8 +176,10 @@ createRestaurantHTML = (restaurant) => {
   li.append(address);
 
   const more = document.createElement('a');
+  more.setAttribute('aria-label', restaurant.name);
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
+  more.tabIndex = '3';
   li.append(more)
 
   return li
@@ -194,6 +196,7 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     function onClick() {
       window.location.href = marker.options.url;
     }
+    marker._icon.tabIndex = '-1';
     self.markers.push(marker);
   });
 

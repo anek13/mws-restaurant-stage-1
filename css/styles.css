@@ -22,7 +22,8 @@ a {
 	text-decoration: none;
 }
 a:hover, a:focus {
-	color: #3397db;
+	/* color: #3397db; */
+	color: #000;
 	text-decoration: none;
 }
 a img{
